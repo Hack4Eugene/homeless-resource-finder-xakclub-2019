@@ -1,0 +1,3 @@
+name: xak-club
+docker_context:
+  - ../
