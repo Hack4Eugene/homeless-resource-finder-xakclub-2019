@@ -5,6 +5,26 @@ import (
   "net/http"
 )
 
-func handleSubmit(w http.ResponseWriter, r *http.Request) {
-  io.WriteString(w, "{Json here}")
+func handleSubmit(w http.ResponseWriter, r *http.Request, service string) {
+  gender := r.PostFormValue("gender")
+  age := r.PostFormValue("age")
+  vet := r.PostFormValue("veteran")
+
+  io.WriteString(w, getAvailable("shelter", gender, age, vet))
+}
+
+func handleShelter(w http.ResponseWriter, r *http.Request) {
+  handleSubmit(w, r, "shelter")
+}
+
+func handleFood(w http.ResponseWriter, r *http.Request) {
+  handleSubmit(w, r, "food")
+}
+
+func handleMedical(w http.ResponseWriter, r *http.Request) {
+  handleSubmit(w, r, "medical")
+}
+
+func handleTransport(w http.ResponseWriter, r *http.Request) {
+  handleSubmit(w, r, "transport")
 }
