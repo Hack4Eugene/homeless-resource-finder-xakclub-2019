@@ -1,9 +1,5 @@
 package main
 
-import (
-
-)
-
-func getAvailible(gender, age, vet string) string {
-
+func getAvailble(gender, age, vet string) string {
+  return "{}"
 }
