@@ -1,0 +1,18 @@
+#form-window {
+     width: 750px;
+     height: 500px;
+     margin: 100px auto 0;
+     background: #457;
+     cursor: hand;
+     cursor: -moz-grab;
+     cursor: -webkit-grab;
+     cursor: grab;
+   }
+
+
+.submit{
+  display:block;
+  height:100px;
+  width:100px;
+  background-color: grey;
+}

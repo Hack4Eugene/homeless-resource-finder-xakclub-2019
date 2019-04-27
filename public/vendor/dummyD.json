@@ -1,0 +1,83 @@
+[
+ {
+   "providerID": 1,
+   "provider name": "mission",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "address 1",
+   "phone": "555-5551",
+   "email": "email@email.com",
+   "website": "website.com"
+ },
+ {
+   "providerID": 2,
+   "provider name": "Eagan Warning",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "123 street b",
+   "phone": "555-5552",
+   "email": "email@email.com",
+   "website": "website.com"
+ },
+ {
+   "providerID": 3,
+   "provider name": "Cahoots",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "123 street b",
+   "phone": "555-5552",
+   "email": "email@email.com",
+   "website": "website.com"
+ },
+ {
+   "providerID": 4,
+   "provider name": "white bird",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "123 street b",
+   "phone": "555-5552",
+   "email": "email@email.com",
+   "website": "website.com"
+ },
+ {
+   "providerID": 6,
+   "provider name": "ltd",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "123 street b",
+   "phone": "555-5552",
+   "email": "email@email.com",
+   "website": "website.com"
+ },
+ {
+   "providerID": 7,
+   "provider name": "lyft",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "123 street b",
+   "phone": "555-5552",
+   "email": "email@email.com",
+   "website": "website.com"
+ },
+ {
+   "providerID": 8,
+   "provider name": "uber",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "123 street b",
+   "phone": "555-5552",
+   "email": "email@email.com",
+   "website": "website.com"
+ },
+ {
+   "providerID": 5,
+   "provider name": "food for lane county",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "123 street b",
+   "phone": "555-5552",
+   "email": "email@email.com",
+   "website": "website.com"
+ },
+ {
+   "providerID": 6,
+   "provider name": "mission",
+   "geolocation": "14.1212, -93.23932823",
+   "physical address": "address 2",
+   "phone": "555-5552",
+   "email": "email@email.com",
+   "website": "website.com"
+ }
+]
