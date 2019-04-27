@@ -7,10 +7,10 @@
      cursor: -moz-grab;
      cursor: -webkit-grab;
      cursor: grab;
-   }
+}
 
 
-.submit{
+.submit {
   display:block;
   height:100px;
   width:100px;
