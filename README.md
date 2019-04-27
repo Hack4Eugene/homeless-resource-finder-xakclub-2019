@@ -30,3 +30,5 @@ Jake Peterson - Front End Tweaker
 # References 
 - Swipe Features -> https://github.com/Stereobit/dragend
 - Inspired by www.bigburgh.com
+=======
+Inspired by www.bigburgh.com
