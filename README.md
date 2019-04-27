@@ -21,12 +21,12 @@ Take on the Homeless Resource Challenge using a Go backend running MariaDB, JS f
 
 # Contributing
 Frankie Gold - Database Administrator  
-Alexandr Iapara - Baby Database Administrator  
+Alexandr Iapara - Android App Developer  
 Alex Anderson - Backend Manager  
 May Tusek - UI / UX Lead Coordinator  
 Konner Maddalozzo - Front End Juicer  
 Jake Peterson - Front End Tweaker  
 
-# References 
+# References
 - Swipe Features --> https://github.com/Stereobit/dragend  
 - Inspired by www.bigburgh.com  
