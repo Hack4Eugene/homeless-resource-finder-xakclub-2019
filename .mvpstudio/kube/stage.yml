@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xakclub-deployment
+  namespace: xakclub
+  labels:
+    app: xakclub-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xakclub-web
+  template:
+    metadata:
+      labels:
+        app: xakclub-web
+    spec:
+      containers:
+      - name: xakclub-web-server
+        image: mvpstudio/xakclub:d7f2458
+        resources:
+           limits:
+              cpu: 0.25
+              memory: 250Mi
+           requests:
+              cpu: 0.25
+              memory: 250Mi
+        ports:
+        - containerPort: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xakclub-web
+  namespace: xakclub
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind: Mapping
+      name: xakclub-mapping
+      host: xakclub.stage.apps.mvpstudio.org
+      prefix: /
+      service: xakclub-web.xakclub
+      ---
+      apiVersion: ambassador/v0
+      kind: TLSContext
+      name: stage-xakclub-tls
+      hosts:
+      - xakclub.stage.apps.mvpstudio.org
+      secret: stage-apps-cert
+spec:
+  selector:
+     app: xakclub-web
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

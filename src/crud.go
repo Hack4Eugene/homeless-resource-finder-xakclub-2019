@@ -1,5 +1,5 @@
 package main
 
-func getAvailble(gender, age, vet string) string {
+func getAvailable(service, gender, age, vet string) string {
   return "{}"
 }
