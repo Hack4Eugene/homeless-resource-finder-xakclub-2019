@@ -28,5 +28,5 @@ Konner Maddalozzo - Front End Juicer
 Jake Peterson - Front End Tweaker  
 
 # References
-- Swipe Features --> https://github.com/Stereobit/dragend  
+- Swipe Features --> https://swipe.js.org/
 - Inspired by www.bigburgh.com  

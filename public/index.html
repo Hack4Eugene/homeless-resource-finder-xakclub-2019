@@ -14,16 +14,93 @@
         <!-- Bootstrap Stylesheet -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+        <!-- Feather Icons -->
+        <script src="https://unpkg.com/feather-icons"></script>
+
         <!-- style.css -->
         <link rel="stylesheet" href="stylesheets/style.css">
     </head>
 
     <body> 
-
         <!-- Main Container -->
-        <div class="container-fluid">
-            <div class="d-flex justify-content-center">...</div>
+        <div class="container-fluid swipe" id="page-swipe">
+            <div class="swipe-wrapper">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card mt-3 hover interactive">
+                            <div class="card-body">
+                                <span><i data-feather="user"></i><span class="ml-2 mt-2"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card mt-3 hover interactive">
+                            <div class="card-body">
+                                <i data-feather="user"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card mt-3 hover interactive">
+                            <div class="card-body">
+                                <i data-feather="user"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card mt-3 hover interactive">
+                            <div class="card-body">
+                                <i data-feather="user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card mt-3 hover interactive">
+                            <div class="card-body">
+                                <span><i data-feather="user"></i><span class="ml-2 mt-2"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card mt-3 hover interactive">
+                            <div class="card-body">
+                                <i data-feather="user"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card mt-3 hover interactive">
+                            <div class="card-body">
+                                <i data-feather="user"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card mt-3 hover interactive">
+                            <div class="card-body">
+                                <i data-feather="user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        
+
+        <!-- Fix Icons -->
+        <script>
+            feather.replace();
+        </script>
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
@@ -35,7 +112,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
         <!-- Swipe.js -->
-        <script src="vendor/scripts/dragend.min.js"></script>
+        <script src="vendor/scripts/swipe.min.js"></script>
 
         <!-- index.js -->
         <script src="scripts/index.js"></script>
