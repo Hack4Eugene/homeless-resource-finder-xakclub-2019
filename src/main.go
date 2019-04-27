@@ -12,6 +12,8 @@ func main() {
 	http.HandleFunc("/", handleRoot)
 	http.HandleFunc("/api/v1", handleGetVersion)
 
+  http.HandleFunc("/api/v1/submit", handleSubmit)
+
 	const PORT string = "8080"
 	log.Fatal(http.ListenAndServe(":"+PORT, nil))
 }
