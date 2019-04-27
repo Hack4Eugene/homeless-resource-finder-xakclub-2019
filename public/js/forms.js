@@ -1,5 +1,3 @@
-
-
 var submitbutton = document.querySelector("#thehead");
 submitbutton.addEventListener("click",submit);
 var p = document.querySelector("#wrapper");
