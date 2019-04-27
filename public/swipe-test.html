@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="age-demo">
+        <div class="drag-page">
+          a
+          </div>
+
+        <div class="drag-page">
+          b
+          </div>
+      </div>
+
+
+    <script src="vender/scripts/dragend.min.js" ></script>
+    <script type="text/javascript">
+
+      var clientInfo = new FormData();
+
+      function setActive(evnt){
+        var element = evnt.target;
+        console.log(element);
+      }
+
+      function saveValues(){
+        var form = document.querySelector("#age-demo");
+
+        var info = form.querySelector(".active").textContent;
+        console.log(info);
+      }
+
+      var options={
+        pageClass: "drag-page",
+        minDragDistance: 15,
+        onDragEnd: saveValues
+
+      }
+      var el =new Dragend(document.getElementById("age-demo"), options);
+      document.querySelector("#age-demo").addEventListener("click",setActive);
+      </script>
+  </body>
+</html>
