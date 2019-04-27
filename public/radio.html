@@ -1,14 +1,82 @@
-<!doctype html>
-<html>
-<head></head>
-<style>
-  </style>
-<body>
-    <input name="animal" id="thing1" value="dogs" type="radio"/>
-      <label for="thing1">Dogs</label>
-    <input name="animal" id="thing2" value="cats" type="radio"/>
-      <label for="thing2">cats</label>
-    <input name="animal" id="thing3" value="tacos" type="radio"/>
-      <label for="thing3">tacos</label>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta Tags-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="HandheldFriendly" content="true">
+
+        <title>Resource Information</title>
+
+        <!-- Web Icon-->
+        <link rel="shortcut icon" type="image/ico" href="images/icon.ico">
+
+        <!-- Bootstrap Stylesheet -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <!-- style.css -->
+        <link rel="stylesheet" href="stylesheets/style.css">
+    </head>
+
+    <body>
+
+        <!-- Main Container -->
+        <div class="container-fluid" >
+          <table class="table" >
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Provider name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+              </tr>
+            </thead>
+            <tbody id="results">
+            </tbody>
+        </div>
+
+
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+
+        <!-- Popper.js CDN-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+        <!-- Bootstrap JS CDN -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- Swipe.js -->
+        <script src="vendor/scripts/dragend.min.js"></script>
+
+        <!-- index.js -->
+        <script src="scripts/index.js"></script>
+
+        <script src="scripts/populate.js"></script>
+    </body>
 </html>
