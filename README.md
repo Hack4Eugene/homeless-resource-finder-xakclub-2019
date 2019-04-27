@@ -8,10 +8,10 @@ Take on the Homeless Resource Challenge using a Go backend running MariaDB, JS f
 > Obtain a copy of the repository.  
 `$ git clone https://github.com/Hack4Eugene/homeless-resource-finder-xakclub-2019`
 
-> Build image with Docker
+> Build image with Docker. 
 `$ sudo docker build xak-demo .`
 
-> Run Docker image
+> Run Docker image. 
 `$ sudo docker run -it -p 8080:8080 xak-demo`
 
 # Deployment
