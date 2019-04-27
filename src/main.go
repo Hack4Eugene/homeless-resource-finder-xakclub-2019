@@ -1,21 +1,47 @@
 package main
 
 import (
-  "fmt"
+	"database/sql"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"os"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
-  fmt.Println("Starting webserver")
+	fmt.Println("Starting webserver")
 	http.HandleFunc("/", handleRoot)
 	http.HandleFunc("/api/v1", handleGetVersion)
+	http.HandleFunc("/api/v1/submit", handleSubmit)
 
-  http.HandleFunc("/api/v1/submit", handleSubmit)
+	dbConnect()
 
 	const PORT string = "8080"
 	log.Fatal(http.ListenAndServe(":"+PORT, nil))
+
+}
+
+func dbConnect() {
+	// Create the database handle, confirm driver is present
+	user := os.Getenv("DATABASE_USER")
+	host := os.Getenv("DATABASE_HOST")
+	pass := os.Getenv("DATABASE_PASSWORD")
+	db, err := sql.Open("mysql", user+":"+pass+"@tcp("+host+")/openeug_openb_dev")
+	defer db.Close()
+	if err != nil {
+		panic(err)
+	}
+
+	// Connect and check the server version
+	var version string
+	err = db.QueryRow("SELECT VERSION()").Scan(&version)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(version)
 }
 
 func handleRoot(w http.ResponseWriter, r *http.Request) {
