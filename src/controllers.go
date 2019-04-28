@@ -12,7 +12,7 @@ func handleSubmit(w http.ResponseWriter, r *http.Request) {
 	vet := r.PostFormValue("veteran")
 	family := r.PostFormValue("family")
 	service := r.PostFormValue("service")
-	top := r.PostFormValue("top")
+	// top := r.PostFormValue("top")
 
 	io.WriteString(w, getAvailable(service, sex, age, vet, family))
 }
