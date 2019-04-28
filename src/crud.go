@@ -32,7 +32,6 @@ type results struct {
 // Get available resources for a person
 func getAvailable(service, sex, age, vet, family string, top int) string {
   var jsonbytestr []byte
-  var err error
 
 	if service == "any" {
     var available results
@@ -102,9 +101,21 @@ func getAvailable(service, sex, age, vet, family string, top int) string {
 
 	}
   if service != "any" {
-    available := make([]overview, top)
+
 
     // fill available
+    stmt, err := db.Prepare("SELECT s.serviceID, s.type, p.providerName FROM services s JOIN provider p ON s.providerID = p.providerID WHERE s.type=?;")
+
+    rows, err := stmt.Query(service)
+    if err != nil {
+      panic(err)
+    }
+
+    available := make([]overview, top)
+
+    for i:=0;rows.Next();i++ {
+      rows.Scan(&available[i].Id, &available[i].Service, &available[i].Name)
+    }
 
     jsonbytestr, err = json.Marshal(available)
     if err != nil {
