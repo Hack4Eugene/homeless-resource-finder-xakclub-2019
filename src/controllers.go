@@ -20,7 +20,9 @@ func handleSubmit(w http.ResponseWriter, r *http.Request) {
 		top = 3
 	}
 
-	io.WriteString(w, getAvailable(service, sex, age, vet, family, top))
+	io.WriteString(w, "GOOD"+sex+age+vet+family+service+topStr)
+
+	//io.WriteString(w, getAvailable(service, sex, age, vet, family, top))
 }
 
 func handleGetProvider(w http.ResponseWriter, r *http.Request) {
