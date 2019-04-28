@@ -1,1 +1,4 @@
 bin/
+go.mod
+go.sum
+.vscode
