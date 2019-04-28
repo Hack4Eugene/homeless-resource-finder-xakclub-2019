@@ -11,12 +11,16 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+var db *sql.DB
+
 func main() {
 	fmt.Println("Starting webserver")
 	http.HandleFunc("/", handleRoot)
 	http.HandleFunc("/api/v1", handleGetVersion)
 
 	dbConnect()
+  defer db.Close()
+  
 	// Resources
 	http.HandleFunc("/api/v1/submit", handleSubmit)
 	http.HandleFunc("/api/v1/info/", handleGetProvider)
@@ -31,8 +35,8 @@ func dbConnect() {
 	user := os.Getenv("DATABASE_USER")
 	host := os.Getenv("DATABASE_HOST")
 	pass := os.Getenv("DATABASE_PASSWORD")
-	db, err := sql.Open("mysql", user+":"+pass+"@tcp("+host+")/HomelessResources")
-	defer db.Close()
+  var err error
+	db, err = sql.Open("mysql", user+":"+pass+"@tcp("+host+")/HomelessResources")
 	if err != nil {
 		panic(err)
 	}

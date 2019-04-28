@@ -24,6 +24,30 @@ $('.interactive').click(function() {
 
 })
 
+$('#formSubmit').click(function() {
+    sex = $('#sexSelector').val();
+    age = $('#ageSelector').val();
+
+    //TODO FIX THIS.
+    isFamily = false;
+    isVet = false;
+
+    serviceVar = 'any';
+
+    formData = new FormData();
+
+    formData.set('sex', sex);
+    formData.set('age', age);
+    formData.set('family', isFamily);
+    formData.set('veteran', isVet);
+    formData.set('service', serviceVar);
+    formData.set('top', 0);
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "/api/v1/all");
+    request.send(formData);
+});
+
 
 const LIBGEO = {lat: 44.048335, lng: -123.0962336};
 const LTDGEO = {lat: 44.0484533,lng: -123.1614783};
