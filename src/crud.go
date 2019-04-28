@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+  _ "fmt"
 )
 
 type overview struct {
@@ -41,6 +42,55 @@ func getAvailable(service, sex, age, vet, family string, top int) string {
     medical := make([]overview, top)
 
     // fill shelters, food, transport, and medical
+    stmtfood, err := db.Prepare("SELECT s.serviceID, s.type, p.providerName FROM services s JOIN provider p ON s.providerID = p.providerID WHERE s.type='food';")
+    if err != nil {
+      panic(err)
+    }
+
+    foodRow, _ := stmtfood.Query()
+
+    for i:=0;i<top;i++ {
+      foodRow.Next()
+      foodRow.Scan(&food[i].Id, &food[i].Service, &food[i].Name)
+    }
+
+    stmtshelters, err := db.Prepare("SELECT s.serviceID, s.type, p.providerName FROM services s JOIN provider p ON s.providerID = p.providerID WHERE s.type='shelter';")
+    if err != nil {
+      panic(err)
+    }
+
+    shelterRow, _ := stmtshelters.Query()
+
+    for i:=0;i<top;i++ {
+      shelterRow.Next()
+      shelterRow.Scan(&shelters[i].Id, &shelters[i].Service, &shelters[i].Name)
+    }
+
+    stmtMedical, err := db.Prepare("SELECT s.serviceID, s.type, p.providerName FROM services s JOIN provider p ON s.providerID = p.providerID WHERE s.type='medical';")
+    if err != nil {
+      panic(err)
+    }
+
+    medicalRow, _ := stmtMedical.Query()
+
+    for i:=0;i<top;i++ {
+      medicalRow.Next()
+      medicalRow.Scan(&medical[i].Id, &medical[i].Service, &medical[i].Name)
+    }
+
+    stmtTransport, err := db.Prepare("SELECT s.serviceID, s.type, p.providerName FROM services s JOIN provider p ON s.providerID = p.providerID WHERE s.type='transport';")
+    if err != nil {
+      panic(err)
+    }
+
+    transportRow, _ := stmtTransport.Query()
+
+    for i:=0;i<top;i++ {
+      transportRow.Next()
+      transportRow.Scan(&transport[i].Id, &transport[i].Service, &transport[i].Name)
+    }
+
+
 
     available.Shelter = shelters
     available.Transport = transport
@@ -63,13 +113,10 @@ func getAvailable(service, sex, age, vet, family string, top int) string {
       panic(err)
     }
 
-    return string(jsonbytestr)
-
   }
 
+  return string(jsonbytestr)
 
-
-	return "{}"
 }
 
 // Get more information about a specific resource
