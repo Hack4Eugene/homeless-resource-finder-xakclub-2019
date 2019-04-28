@@ -90,8 +90,6 @@ func getAvailable(service, sex, age, vet, family string, top int) string {
       transportRow.Scan(&transport[i].Id, &transport[i].Service, &transport[i].Name)
     }
 
-
-
     available.Shelter = shelters
     available.Transport = transport
     available.Food = food
@@ -122,5 +120,24 @@ func getAvailable(service, sex, age, vet, family string, top int) string {
 // Get more information about a specific resource
 func getProvider(id string) string {
 
-	return "{}"
+  var provider provider
+
+  stmtProvider, err := db.Prepare("SELECT providerID, providerName, geoLocation, physicalAddress, phone, email, website FROM provider WHERE providerID = ?")
+  if err != nil {
+    panic(err)
+  }
+  rows, err := stmtProvider.Query(id)
+  if err != nil {
+    panic(err)
+  }
+
+  rows.Next()
+  rows.Scan(&provider.Id, &provider.Name, &provider.Coords, &provider.Address, &provider.Phone, &provider.Email, &provider.Website)
+
+	dat, err := json.Marshal(provider)
+  if err != nil {
+    panic(err)
+  }
+
+  return string(dat)
 }
