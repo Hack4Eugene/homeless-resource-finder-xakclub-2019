@@ -156,12 +156,6 @@ async function fetchResults(type="food",demographics={}){
      }
 
     }
-    // arr[2].set("age",30);
-    // arr[2].set("sex","m");
-    // arr[2].set("veteran",1);
-    // arr[2].set("children",2);
-    // arr[2].set("location",null);
-    // arr[2].set("type",3 );
   req.send(demographics)
 }
 

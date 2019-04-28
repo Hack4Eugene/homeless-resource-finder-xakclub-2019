@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="stylesheets/style.css">
     </head>
 
-    <body> 
+    <body>
         <!-- Main Container -->
         <div class="container-fluid mt-3 landing-swipe">
             <div class="card">
@@ -36,13 +36,13 @@
                                 <option>Female (AFAB)</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="ageSelector">How old are you?</label>
                             <input class="form-control" id="ageSelector" type="number">
                         </div>
 
-                        
+
                         <div class="form-group">
                             <label for="isFamily">Are you a part of a family of children and adults?</label>
 
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="form-group">
                             <label for="isVet">Are you a veteran?</label>
 
@@ -83,6 +83,62 @@
             </div>
         </div>
 
+
+        <!-- Main Container -->
+        <div class="container-fluid" >
+          <table class="table" >
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Provider name</th>
+                <th scope="col">Service</th>
+                <th scope="col">Phone Number</th>
+              </tr>
+            </thead>
+            <tbody id="results">
+            </tbody>
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">business name n type of service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container g-map">
+                    therere is a map here
+                 </div>
+                 <div class="container">
+                   <div class="row">
+                     <div class="col-sm container uri-link">
+                       <p>bus route</p>
+                       <p>walking route</p>
+                     </div>
+                     <div class="col-sm container specs">
+                       <p>Email</p>
+                       <p>Street Address</p>
+                       <p>Website</p>
+                     </div>
+                   </div>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="modal-call" lass="btn btn-primary">Call</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <!-- Fix Icons -->
         <script>
             feather.replace();
@@ -101,6 +157,8 @@
         <script src="vendor/scripts/swipe.min.js"></script>
 
         <!-- index.js -->
-        <script src="scripts/index.js"></script>
+        <script src="scripts/config.js"></script>
+        <script src="scripts/populate.js" async defer></script>
+        <script src="scripts/index.js" async defer></script>
     </body>
 </html>

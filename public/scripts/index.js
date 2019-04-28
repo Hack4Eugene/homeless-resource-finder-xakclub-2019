@@ -15,7 +15,7 @@ window.swipePagination = new Swipe(element, {
 });
 
 $('.hover').hover(function() {
-   $(this).css('opacity', '1'); 
+   $(this).css('opacity', '1');
 }, function() {
     $(this).css('opacity', '.5');
 });
@@ -39,7 +39,36 @@ $('#formSubmit').click(function() {
     formData.set('service', serviceVar);
     formData.set('top', 0);
 
-    var request = new XMLHttpRequest();
-    request.open("POST", "/api/v1/all");
-    request.send(formData);
+    // var request = new XMLHttpRequest();
+    // request.open("POST", "/api/v1/all");
+    // request.send(formData);
+
+    fetchResults(",",formData);
 });
+
+
+function doWork(text){
+  if(typeof(text)==typeof(".")){
+    text = JSON.parse(text);
+    appendResults(text)
+  }
+  else{
+    console.log(text);
+  }
+}
+
+
+
+async function fetchResults(type="food",demographics={}){
+  var req = new XMLHttpRequest(),
+    method = "GET",
+    url = "/api/v1/submit/";
+  req.open(method,url);
+  req.onreadystatechange= function(){
+     if(req.readyState === 4 && req.status === 200){
+       doWork(req.responseText);
+     }
+
+    }
+  req.send(demographics)
+}
