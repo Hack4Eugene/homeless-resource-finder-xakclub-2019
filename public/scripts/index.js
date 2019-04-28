@@ -42,6 +42,4 @@ $('#formSubmit').click(function() {
     var request = new XMLHttpRequest();
     request.open("POST", "/api/v1/all");
     request.send(formData);
-
-    $('#landing-swipe').
 });
