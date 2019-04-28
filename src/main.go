@@ -16,7 +16,7 @@ func main() {
 	http.HandleFunc("/", handleRoot)
 	http.HandleFunc("/api/v1", handleGetVersion)
 
-	// dbConnect()
+	dbConnect()
 	// Resources
 	http.HandleFunc("/api/v1/submit", handleSubmit)
 	http.HandleFunc("/api/v1/info/", handleGetProvider)
