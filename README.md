@@ -29,7 +29,7 @@ Alexandr Iapara - Android App Developer
 Alex Anderson - Backend Manager  
 May Tusek - UI / UX Lead Coordinator  
 Konner Maddalozzo - Front End Juicer  
-Jake Petersen - Front End Tweaker  
+Jake Petersen - DevOps Engineer 
 
 # References
 - Swipe Features --> https://swipe.js.org/
