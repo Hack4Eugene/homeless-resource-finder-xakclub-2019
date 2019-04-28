@@ -19,7 +19,11 @@
     </head>
 
     <body>
-
+      <div class="container">
+        <div class="jumbotron">
+          <div style="height: 300px;" id="map"></div>
+        </div>
+      </div>
         <!-- Main Container -->
         <div class="container-fluid" >
           <table class="table" >
@@ -36,14 +40,10 @@
         </div>
 
 
-        <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">business name n type of service</h5>
@@ -52,9 +52,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="container g-map">
-            therere is a map here
-         </div>
+        <div class="container">
+          <div class="jumbotron">
+            <div style="height: 200px;" id="map-modal"></div>
+          </div>
+        </div>
+         <div id="warnings-panel" style="visbile:false;"></div>
+
          <div class="container">
            <div class="row">
              <div class="col-sm container uri-link">
@@ -91,8 +95,12 @@
         <script src="vendor/scripts/dragend.min.js"></script>
 
         <!-- index.js -->
-        <script src="scripts/index.js"></script>
+        <script type="text/javascript" src="scripts/config.js"></script>
+        <script type="text/javascript" src="scripts/index.js"  async defer></script>
+        <script type="text/javascript" src="scripts/populate.js" async defer></script>
+        <script type="text/javascript" async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwD3Tflfq_2SFz1hub5GDgpVnBaElVmsU&callback=initMap">
+    </script>
 
-        <script src="scripts/populate.js"></script>
     </body>
 </html>
