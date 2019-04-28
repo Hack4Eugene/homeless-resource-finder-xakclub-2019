@@ -31,7 +31,7 @@ func dbConnect() {
 	user := os.Getenv("DATABASE_USER")
 	host := os.Getenv("DATABASE_HOST")
 	pass := os.Getenv("DATABASE_PASSWORD")
-	db, err := sql.Open("mysql", user+":"+pass+"@tcp("+host+")/openeug_openb_dev")
+	db, err := sql.Open("mysql", user+":"+pass+"@tcp("+host+")/HomelessResources")
 	defer db.Close()
 	if err != nil {
 		panic(err)

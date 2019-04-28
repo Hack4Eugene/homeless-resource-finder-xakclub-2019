@@ -34,7 +34,6 @@ func getAvailable(service, sex, age, vet, family string, top int) string {
 
 	}
 
-	// stuff here
 
 	return "{}"
 }
