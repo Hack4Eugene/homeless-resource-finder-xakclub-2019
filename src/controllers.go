@@ -11,7 +11,7 @@ func handleSubmit(w http.ResponseWriter, r *http.Request, service string) {
   vet := r.PostFormValue("veteran")
   family := r.PostFormValue("family")
 
-  io.WriteString(w, getAvailable(service, gender, age, vet))
+  io.WriteString(w, getAvailable("shelter", gender, age, vet, family))
 }
 
 func handleShelter(w http.ResponseWriter, r *http.Request) {
