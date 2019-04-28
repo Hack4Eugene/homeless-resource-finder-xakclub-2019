@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "dependencies": {
+        "express": "^4.16.4",
+        "knex": "^0.16.5",
+        "mysql": "^2.17.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.11"
+    }
+}

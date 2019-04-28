@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: xakclub-web-server
-        image: mvpstudio/xakclub:d7f2458
+        image: mvpstudio/xakclub:7e1dd9d
         resources:
            limits:
               cpu: 0.25

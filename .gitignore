@@ -2,3 +2,5 @@ bin/
 go.mod
 go.sum
 .vscode
+src/src
+node_modules
