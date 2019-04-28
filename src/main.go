@@ -19,7 +19,7 @@ func main() {
 	// dbConnect()
 	// Resources
 	http.HandleFunc("/api/v1/submit", handleSubmit)
-  http.HandleFunc("/api/v1/info/", handleGetProvider)
+	http.HandleFunc("/api/v1/info/", handleGetProvider)
 
 	const PORT string = "8080"
 	log.Fatal(http.ListenAndServe(":"+PORT, nil))
