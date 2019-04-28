@@ -4,21 +4,25 @@ function dummyForms(arr){
   arr[0].set("veteran",0);
   arr[0].set("children",0);
   arr[0].set("location",null);
-  arr[0].set("type", 3 );
+  arr[0].set("service", "any" );
+  arr[0].set("top",3);
 
   arr[1].set("age",25);
   arr[1].set("sex","f");
   arr[1].set("veteran",1);
   arr[1].set("children",0);
   arr[1].set("location",null);
-  arr[1].set("type", 3);
+  arr[1].set("service", "bed");
+  arr[1].set("top","asdf");
+
 
   arr[2].set("age",30);
   arr[2].set("sex","m");
   arr[2].set("veteran",1);
   arr[2].set("children",2);
   arr[2].set("location",null);
-  arr[2].set("type",3 );
+  arr[2].set("service","any" );
+  arr[2].set("top",5);
 }
 
 
@@ -106,10 +110,15 @@ var el = `[
  }
 ]`;
 
+const LIBGEO = "44.048335,-123.0962336";
 var results= JSON.parse(el);
 var div = document.querySelector("#results")
 
-function setModal(data){
+
+/* sets google map and and info to this detialed list */
+
+
+function setModal(data,userGEO=LIBGEO){
   var modal = document.querySelector(".modal");
   var head = modal.querySelector(".modal-header");
   var body = modal.querySelector(".modal-body");
@@ -214,8 +223,8 @@ function appendResults(div,data){
     // row.appendChild(document.createElement("span"))
     row.childNodes[0].textContent=index.toString();
     row.childNodes[1].textContent=data["provider name"];
-    row.childNodes[2].textContent=data["email"];
-    row.childNodes[3].textContent=data["phone"];
+    row.childNodes[2].textContent=data["service"];
+    // row.childNodes[3].textContent=data["phone"];
     div.appendChild(row);
   });
 
