@@ -2,3 +2,4 @@ bin/
 go.mod
 go.sum
 .vscode
+public/scripts/config.js

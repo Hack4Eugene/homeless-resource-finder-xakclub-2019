@@ -2,7 +2,7 @@ function dummyForms(arr){
   arr[0].set("age",17);
   arr[0].set("sex","m");
   arr[0].set("veteran",0);
-  arr[0].set("children",0);
+  arr[0].set("family",0);
   arr[0].set("location",null);
   arr[0].set("service", "any" );
   arr[0].set("top",3);
@@ -10,16 +10,16 @@ function dummyForms(arr){
   arr[1].set("age",25);
   arr[1].set("sex","f");
   arr[1].set("veteran",1);
-  arr[1].set("children",0);
+  arr[1].set("family",0);
   arr[1].set("location",null);
-  arr[1].set("service", "bed");
-  arr[1].set("top","asdf");
+  arr[1].set("service", "transport");
+  arr[1].set("top",0);
 
 
   arr[2].set("age",30);
   arr[2].set("sex","m");
   arr[2].set("veteran",1);
-  arr[2].set("children",2);
+  arr[2].set("family",2);
   arr[2].set("location",null);
   arr[2].set("service","any" );
   arr[2].set("top",5);
@@ -110,19 +110,12 @@ var el = `[
  }
 ]`;
 
-const LIBGEO = "44.048335,-123.0962336";
-var results= JSON.parse(el);
-var div = document.querySelector("#results")
-
+var results;
+var div;
 
 /* sets google map and and info to this detialed list */
 
 
-function setModal(data,userGEO=LIBGEO){
-  var modal = document.querySelector(".modal");
-  var head = modal.querySelector(".modal-header");
-  var body = modal.querySelector(".modal-body");
-}
 
 var ds = [
    new FormData(),
@@ -134,11 +127,12 @@ dummyForms(ds);
 
 function doWork(text){
   if(typeof(text)==typeof(".")){
-    text = JSON.parse(text);
     console.log(text);
   }
   else{
-    console.log(text);
+    for(var pair of demographics.entries()) {
+       console.log(pair[0]+ ', '+ pair[1]);
+    }
   }
 }
 
@@ -146,49 +140,89 @@ function doWork(text){
 
 async function fetchResults(type="food",demographics={}){
   var req = new XMLHttpRequest(),
-    method = "GET",
-    url = "/api/v1/submit/";
+    method = "POST",
+    url = "/api/v1/submit";
   req.open(method,url);
   req.onreadystatechange= function(){
-     if(req.readyState === 4 && req.status === 200){
-       console.log("req came back");
+     if(req.readyState === 4){
        doWork(req.responseText)
      }
 
     }
-    // arr[2].set("age",30);
-    // arr[2].set("sex","m");
-    // arr[2].set("veteran",1);
-    // arr[2].set("children",2);
-    // arr[2].set("location",null);
-    // arr[2].set("type",3 );
-  req.send(demographics)
+   req.send(demographics)
 }
 
-async function fetchMoreList(type="food",demographics={}){
+async function fetchMoreList(demographics={}){
+  // url = `/api/v1/info/${demographics['providerID']}`;
 
+  var req = new XMLHttpRequest(),
+    method = "POST",
+    url = `/api/v1/sumbmit`;
+  req.open(method,url);
+  req.onreadystatechange= function(){
+     if(req.readyState === 4){
+       doWork(req.responseText)
+     }
+
+    }
+   req.send(demographics)
 
 }
 
 
 async function UnitTests(ds){
   try{
-    console.log(await fetchResults(ds[0]));
-    console.log(await fetchResults(ds[1]));
-    console.log(await fetchResults(ds[2]));
+    console.log(await fetchResults("",ds[0]));
+    console.log(await fetchMoreList("",ds[1]));
+    console.log(await fetchResults("",ds[2]));
   }
   catch(e){
     console.log(e);
   }
+
 }
 UnitTests(ds);
 
 
 
-function viewResults(evt){
-    console.log(evt.target.parentNode.childNodes);
+/* calulate js maps directions
+
+*/
+var userG={};
+function getUserLoc(info){
+var x = navigator.geolocation;
+console.log("permision: ",x);
+    if (x) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+          setModal(info,pos);
+        },(err)=>{
+          switch(err.code) {
+              case err.PERMISSION_DENIED:
+              setModal(info,0);
+                break;
+              case err.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable.");
+                break;
+              case err.TIMEOUT:
+              setModal(info,0);
+                break;
+              case err.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+            }
+        });
+      }
+    else {
+      alert('location sharing is NOT supported hre')
+        setModal(info,0);
+    }
+
+}
+/* grabs the specific info from the list of info,
+uses the ID in the list and makes a query t oget details.
+*/
+async function viewResults(evt){
     var id=evt.target.parentNode.getAttribute("data-id");
-    console.log(id);
     var res=0;
     for(var i=0;i<results.length;i++){
       if(Number(results[i]["providerID"]) == Number(id)){
@@ -197,7 +231,7 @@ function viewResults(evt){
       }
     }
     if(res){
-      setModal(res);
+     getUserLoc(res);
       $(".modal").modal();
       return 1;
     }
@@ -206,6 +240,8 @@ function viewResults(evt){
     }
 }
 
+
+/* create a list */
 function appendResults(div,data){
   var row;
   var col;
@@ -221,7 +257,7 @@ function appendResults(div,data){
     row.appendChild(col.cloneNode(true))
     row.appendChild(col.cloneNode(true))
     // row.appendChild(document.createElement("span"))
-    row.childNodes[0].textContent=index.toString();
+    row.childNodes[0].textContent=(index+1).toString();
     row.childNodes[1].textContent=data["provider name"];
     row.childNodes[2].textContent=data["service"];
     // row.childNodes[3].textContent=data["phone"];
@@ -232,4 +268,20 @@ function appendResults(div,data){
 
 }
 
-appendResults(div,results);
+window.addEventListener("load",()=>{
+  results= JSON.parse(el);
+  div = document.querySelector("#results")
+  var uluru = LIBGEO;
+
+  var marker = new google.maps.Marker({position: uluru, map: BIGMAP});
+
+  // map over list of results from api.
+  var markers = results.map( (elem, index) =>{
+    var geo = elem.geolocation.split(',');
+    var geo = { lat: parseFloat(geo[0]) , lng: parseFloat(geo[1]) }
+    return new google.maps.Marker({position: geo, map: BIGMAP});
+  });
+
+  appendResults(div,results);
+
+})
