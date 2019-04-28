@@ -15,13 +15,11 @@ func main() {
 	fmt.Println("Starting webserver")
 	http.HandleFunc("/", handleRoot)
 	http.HandleFunc("/api/v1", handleGetVersion)
-  
-	dbConnect()
+
+	// dbConnect()
 	// Resources
-	// http.HandleFunc("/api/v1/shelter/submit", handleShelter)
-	// http.HandleFunc("/api/v1/food/submit", handleFood)
-	// http.HandleFunc("/api/v1/medical/submit", handleMedical)
-	// http.HandleFunc("/api/v1/transport/submit", handleTransport)
+	http.HandleFunc("/api/v1/submit", handleSubmit)
+  http.HandleFunc("/api/v1/info/", handleGetProvider)
 
 	const PORT string = "8080"
 	log.Fatal(http.ListenAndServe(":"+PORT, nil))
