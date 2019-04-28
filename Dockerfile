@@ -1,7 +1,15 @@
-FROM golang:1.8.5-jessie
+FROM mvpstudio/golang:1.12
 LABEL maintainer="Jake Petersen <jpeter17@uoregon.edu>"
-WORKDIR /go/src/app
+
+WORKDIR $GOPATH
+
 ADD src src
 ADD public public
+
+WORKDIR $GOPATH/src
+RUN go get github.com/go-sql-driver/mysql
+RUN go build
+
 EXPOSE 8080
-CMD [ "./src/src"]
+USER mvp
+CMD [ "./src"]
