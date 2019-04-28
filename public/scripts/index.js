@@ -46,8 +46,9 @@ $('#formSubmit').click(function() {
     var request = new XMLHttpRequest();
     request.open("POST", "/api/v1/all");
     request.send(formData);
+  
+    $("#landing-page").fadeOut();
 });
-
 
 const LIBGEO = {lat: 44.048335, lng: -123.0962336};
 const LTDGEO = {lat: 44.0484533,lng: -123.1614783};
