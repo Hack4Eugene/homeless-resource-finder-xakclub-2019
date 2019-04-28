@@ -1,6 +1,7 @@
 package main
 
 import (
+  "fmt"
 	"io"
 	"net/http"
 	"strconv"
@@ -14,6 +15,8 @@ func handleSubmit(w http.ResponseWriter, r *http.Request) {
 	family := r.PostFormValue("family")
 	service := r.PostFormValue("service")
 	topStr := r.PostFormValue("top")
+
+  fmt.Println(sex, age, vet, family, service)
 
 	top, err := strconv.Atoi(topStr)
 	if err != nil || top > 20 || top < 1 {
