@@ -198,6 +198,7 @@ console.log("permision: ",x);
         },(err)=>{
           switch(err.code) {
               case err.PERMISSION_DENIED:
+              console.log("perminssion denied");
               setModal(info,0);
                 break;
               case err.POSITION_UNAVAILABLE:

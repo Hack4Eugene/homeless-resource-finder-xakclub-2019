@@ -52,15 +52,14 @@ function calculateAndDisplayRoute(gps=[0,0],directionsDisplay, directionsService
     markerArray[i].setMap(null);
   }
 // ?  befaft=[userGEO,data];// before and after coordinates
-  console.log(gps);
-  gps[0]= gps[0] ? gps[0] : LIBGEO;
-  gps[1]= gps[1] ? gps[1] : LTDGEO;
+  // gps[0]= 1 ? gps[0] : LIBGEO;
+  // gps[1]= 1 ? gps[1] : LIBGEO;
   console.log(gps);
   // Retrieve the start and end locations and create a DirectionsRequest using
   // WALKING directions.
   directionsService.route({
     origin: new google.maps.LatLng(gps[0].lat, gps[0].lng),
-    destination:new google.maps.LatLng(gps[1].lat, gps[1].lng),
+    destination: LIBADDR,
     travelMode: 'WALKING'
   }, function(response, status) {
     // Route the directions and pass the response to a function to create
@@ -146,16 +145,16 @@ function setModal(data,userGEO=LIBGEO){
 
   }
 
-
+  console.log("userdg",userGEO,LIBGEO);
 
   var markerArray = [];
   console.log("hello");
-  befaft=[userGEO,data];// before and after coordinates
+  befaft=[userGEO,LIBADDR];// before and after coordinates
   // Instantiate a directions service.
   var directionsService = new google.maps.DirectionsService;
   var map = new google.maps.Map(document.getElementById('map-modal'), {
     zoom: 20,
-    center: userGEO || LIBGEO
+    center: LIBGEO
   });
   // Create a renderer for directions and bind it to the map.
   var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
