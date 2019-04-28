@@ -27,7 +27,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Provider name</th>
-                <th scope="col">Email</th>
+                <th scope="col">Service</th>
                 <th scope="col">Phone Number</th>
               </tr>
             </thead>
@@ -46,17 +46,33 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">business name n type of service</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="container g-map">
+            therere is a map here
+         </div>
+         <div class="container">
+           <div class="row">
+             <div class="col-sm container uri-link">
+               <p>bus route</p>
+               <p>walking route</p>
+             </div>
+             <div class="col-sm container specs">
+               <p>Email</p>
+               <p>Street Address</p>
+               <p>Website</p>
+             </div>
+           </div>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="modal-call" lass="btn btn-primary">Call</button>
       </div>
     </div>
   </div>
