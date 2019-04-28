@@ -204,7 +204,24 @@ function appendResults(div,data){
   var row;
   var col;
   var th;
-  data.forEach(function (data, index){
+  data2 = []
+
+  try{
+    data.mapKeys( (key, value)=>{
+      value.forEach( (el,index) =>{
+        data2.push(el);
+      })
+    })
+  }
+  catch(e){
+    data2=data;
+  }
+  finally{
+    
+  }
+
+
+  data2.forEach(function (data, index){
     row = document.createElement("tr");
     row.setAttribute("data-id",data["providerID"]);
     th=document.createElement("th");

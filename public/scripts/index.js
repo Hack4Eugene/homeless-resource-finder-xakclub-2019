@@ -20,6 +20,37 @@ $('.hover').hover(function() {
     $(this).css('opacity', '.5');
 });
 
+function doWork(text){
+  console.log("RESULTS text");
+  if(typeof(text)==typeof(".")){
+    text = JSON.parse(text);
+    appendResults(text,document.querySelector("#results"))
+  }
+  else{
+    appendResults(text,document.querySelector("#results"))
+  }
+}
+
+
+
+async function fetchResults(type="food",demographics={}){
+  var req = new XMLHttpRequest(),
+    method = "POST",
+    url = "/api/v1/submit/";
+
+  req.open(method,url);
+
+  console.log("asdfsadf sendin grequest");
+  req.onreadystatechange= function(){
+    console.log("is it done yet?");
+     if(req.readyState === 4){
+       doWork(req.responseText);
+
+     }
+
+    }
+  req.send(demographics)
+}
 $('#formSubmit').click(function() {
     sex = $('#sexSelector').val();
     age = $('#ageSelector').val();
@@ -42,33 +73,6 @@ $('#formSubmit').click(function() {
     // var request = new XMLHttpRequest();
     // request.open("POST", "/api/v1/all");
     // request.send(formData);
-
+    console.log("sending it now,");
     fetchResults(",",formData);
 });
-
-
-function doWork(text){
-  if(typeof(text)==typeof(".")){
-    text = JSON.parse(text);
-    appendResults(text)
-  }
-  else{
-    console.log(text);
-  }
-}
-
-
-
-async function fetchResults(type="food",demographics={}){
-  var req = new XMLHttpRequest(),
-    method = "GET",
-    url = "/api/v1/submit/";
-  req.open(method,url);
-  req.onreadystatechange= function(){
-     if(req.readyState === 4 && req.status === 200){
-       doWork(req.responseText);
-     }
-
-    }
-  req.send(demographics)
-}
